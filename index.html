@@ -45,7 +45,19 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(160deg, rgba(178,19,52,.14), transparent 28%, transparent 75%, rgba(178,19,52,.08));
+  background:
+    linear-gradient(160deg, rgba(178,19,52,.18), transparent 28%, transparent 75%, rgba(178,19,52,.12)),
+    linear-gradient(rgba(7,7,10,.70), rgba(10,10,12,.82));
+  pointer-events:none;
+  z-index:1;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('fondo-remodelacion.jpg') center/cover no-repeat;
+  opacity:.16;
+  filter:grayscale(.12);
   pointer-events:none;
 }
 .top-band{
@@ -57,10 +69,11 @@ body{
   background:linear-gradient(135deg,var(--primary),var(--primary-2));
   border-radius:0 0 34px 34px;
   opacity:.95;
+  z-index:2;
 }
 .logo-shell{
   position:relative;
-  z-index:2;
+  z-index:3;
   width:118px;
   height:118px;
   margin:8px auto 18px;
@@ -95,7 +108,7 @@ body{
 }
 .brand{
   position:relative;
-  z-index:2;
+  z-index:3;
   text-align:center;
 }
 .brand h1{
@@ -111,7 +124,7 @@ body{
 }
 .badges{
   position:relative;
-  z-index:2;
+  z-index:3;
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
@@ -129,7 +142,7 @@ body{
 }
 .links{
   position:relative;
-  z-index:2;
+  z-index:3;
   display:grid;
   gap:12px;
 }
@@ -157,14 +170,17 @@ body{
   border-radius:14px;
   display:grid;
   place-items:center;
-  font-size:1.15rem;
-  font-weight:700;
   flex:0 0 auto;
   background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.18);
 }
 .btn-secondary .app-icon{
   background:linear-gradient(145deg,#202028,#191920);
+}
+.app-icon svg{
+  width:20px;
+  height:20px;
+  fill:currentColor;
 }
 .btn-text{
   flex:1;
@@ -184,7 +200,7 @@ body{
 .services{
   margin-top:18px;
   position:relative;
-  z-index:2;
+  z-index:3;
   display:grid;
   grid-template-columns:1fr;
   gap:12px;
@@ -206,7 +222,11 @@ body{
   place-items:center;
   background:linear-gradient(135deg,rgba(178,19,52,.22),rgba(178,19,52,.08));
   border:1px solid rgba(255,255,255,.08);
-  font-size:1.25rem;
+}
+.service-icon svg{
+  width:22px;
+  height:22px;
+  fill:#fff;
 }
 .service-text strong{
   display:block;
@@ -219,6 +239,8 @@ body{
   margin-top:3px;
 }
 .footer{
+  position:relative;
+  z-index:3;
   text-align:center;
   color:#8d9098;
   font-size:.78rem;
@@ -248,15 +270,29 @@ body{
 
       <div class="links">
         <a href="https://wa.me/573163641863?text=Hola,%20quiero%20una%20cotización%20de%20obra%20o%20remodelación" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-          <div class="app-icon">✆</div>
+          <div class="app-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.55 0 .26 5.29.26 11.79c0 2.08.54 4.11 1.57 5.91L0 24l6.47-1.7a11.8 11.8 0 0 0 5.59 1.42h.01c6.5 0 11.79-5.29 11.79-11.79 0-3.15-1.23-6.1-3.34-8.45ZM12.07 21.7a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.84 1.01 1.03-3.74-.24-.38a9.77 9.77 0 0 1-1.52-5.23c0-5.42 4.41-9.83 9.84-9.83 2.62 0 5.09 1.02 6.93 2.88a9.76 9.76 0 0 1 2.89 6.95c0 5.42-4.42 9.82-9.83 9.82Zm5.39-7.37c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.29-.75.95-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.24-.46-2.35-1.48-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.58-.9-2.16-.24-.57-.47-.49-.65-.49h-.56c-.19 0-.49.07-.75.36-.25.29-.98.96-.98 2.34 0 1.38 1.01 2.72 1.15 2.91.15.19 1.98 3.03 4.8 4.24.67.29 1.19.46 1.6.59.67.21 1.27.18 1.75.11.53-.08 1.72-.7 1.96-1.39.24-.69.24-1.28.17-1.39-.08-.11-.27-.18-.56-.32Z"/></svg>
+          </div>
           <div class="btn-text">
             <strong>WhatsApp</strong>
             <span>Solicita tu cotización</span>
           </div>
         </a>
 
+        <a href="tel:+573163641863" class="btn btn-secondary">
+          <div class="app-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.56 0 1 .44 1 1V20c0 .56-.44 1-1 1C10.07 21 3 13.93 3 5c0-.56.44-1 1-1h3.5c.56 0 1 .44 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg>
+          </div>
+          <div class="btn-text">
+            <strong>Llamar</strong>
+            <span>316 364 1863</span>
+          </div>
+        </a>
+
         <a href="https://www.instagram.com/remodelando_ipiales/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-          <div class="app-icon">◎</div>
+          <div class="app-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7Zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3Zm11.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/></svg>
+          </div>
           <div class="btn-text">
             <strong>Instagram</strong>
             <span>Proyectos, avances e ideas</span>
@@ -264,7 +300,9 @@ body{
         </a>
 
         <a href="https://www.facebook.com/profile.php?id=61555804978067" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-          <div class="app-icon">f</div>
+          <div class="app-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.87.24-1.46 1.49-1.46H16.7V4.96c-.31-.04-1.37-.12-2.6-.12-2.58 0-4.34 1.57-4.34 4.47V11H7v3h2.76v8h3.74Z"/></svg>
+          </div>
           <div class="btn-text">
             <strong>Facebook</strong>
             <span>Conoce más de nuestro trabajo</span>
@@ -274,7 +312,7 @@ body{
 
       <div class="services">
         <div class="service">
-          <div class="service-icon">🏗</div>
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19h18v2H3v-2Zm2-2V8l5 3v6H5Zm7 0V3l5 3v11h-5Zm7 0v-7l2 1.2V17h-2Z"/></svg></div>
           <div class="service-text">
             <strong>Construcción</strong>
             <span>Obra y adecuaciones con acabados confiables</span>
@@ -282,7 +320,7 @@ body{
         </div>
 
         <div class="service">
-          <div class="service-icon">🛠</div>
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m22.7 19.3-6.36-6.36a5 5 0 0 1-6.5-6.5l2.2 2.2 2.12-2.12-2.2-2.2a5 5 0 0 1 6.5 6.5L24 17.17 22.7 19.3ZM1.3 22.7l6.4-6.4 1.4 1.4-6.4 6.4-1.4-1.4Zm4.56-9.52L0 7.32 1.32 6l5.86 5.86-1.32 1.32Zm3.14 3.14 1.32-1.32 1.86 1.86-1.32 1.32-1.86-1.86Z"/></svg></div>
           <div class="service-text">
             <strong>Remodelación</strong>
             <span>Transformamos espacios residenciales y comerciales</span>
@@ -290,7 +328,7 @@ body{
         </div>
 
         <div class="service">
-          <div class="service-icon">✎</div>
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25Zm14.71-9.04a1 1 0 0 0 0-1.41l-2.5-2.5a1 1 0 0 0-1.41 0L12.13 5.97l3.75 3.75 1.83-1.51Z"/></svg></div>
           <div class="service-text">
             <strong>Diseño</strong>
             <span>Ideas funcionales para espacios mejor aprovechados</span>
